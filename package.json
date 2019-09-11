@@ -1,6 +1,6 @@
 {
-  "name": "monaco-editor-webpack-plugin",
-  "version": "1.7.0",
+  "name": "@dlannoye/monaco-editor-webpack-plugin",
+  "version": "1.7.1",
   "description": "A webpack plugin for the Monaco Editor",
   "main": "index.js",
   "typings": "./index.d.ts",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Microsoft/monaco-editor-webpack-plugin.git"
+    "url": "git+https://github.com/dlannoye/monaco-editor-webpack-plugin.git"
   },
   "keywords": [
     "webpack",
