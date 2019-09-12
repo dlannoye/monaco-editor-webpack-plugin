@@ -115,10 +115,20 @@ function createLoaderRules(languages, features, workers, outputPath, publicPath)
       function stripTrailingSlash(str) {
         return str.replace(/\\/$/, '');
       }
+
+      function getWorkerSafeURL(url) {
+        if (!url.toLowerCase().startsWith('http')) {          
+          return url;
+        }
+
+        const blob = new Blob(['importScripts("'+ url + '")'], { type: 'application/javascript' });
+        return window.URL.createObjectURL(blob)
+      }
+
       return {
         getWorkerUrl: function (moduleId, label) {
           var pathPrefix = (typeof __webpack_public_path__ === 'string' ? __webpack_public_path__ : ${JSON.stringify(publicPath)});
-          return (pathPrefix ? stripTrailingSlash(pathPrefix) + '/' : '') + paths[label];
+          return getWorkerSafeURL((pathPrefix ? stripTrailingSlash(pathPrefix) + '/' : '') + paths[label]);
         }
       };
     })(${JSON.stringify(workerPaths, null, 2)})`,
